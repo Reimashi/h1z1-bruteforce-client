@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 using WindowsInput;
 
 namespace H1Z1Bot
@@ -19,7 +20,8 @@ namespace H1Z1Bot
         private bool[] state = new bool[] { false, false, false, false, false };
         private bool stop = false;
         private InputSimulator iosim = new InputSimulator();
-        private Random rand = new Random();
+		private Random rand = new Random();
+		private Thread worker = null;
 
         public wMain()
         {
@@ -34,33 +36,40 @@ namespace H1Z1Bot
 
         private void OnF10Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
-            //Esto en su lugar es una petición al servidor
-            uint[] codes = new uint[] {0000,1112,1113,1114,1115};
-
-            for(int j = 0; j < codes.Length; j++ ){
-                SendCode(codes[j]);
-                state[j] = true;
-                if (stop) break;
-            }
-
-            if (!stop)
-            {
-                //Confirma al server que ha indroducido el set de códigos
-                SendCode(9999);
-            }
-            else
-            {
-                //Confirma al server hasta donde haya llegado
-                SendCode(0000);
-            }
-            
+			this.worker = new Thread (TestCodes);
+			this.worker.Start();
         }
 
         private void OnF11Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
             MessageBox.Show("F11 pulsado");
             stop = true;
+			// Espera que acabe el bucle normalmente
+			this.worker.Join();
         }
+
+		private void TestCodes()
+		{
+			//Esto en su lugar es una petición al servidor
+			uint[] codes = new uint[] {0000,1112,1113,1114,1115};
+
+			for(int j = 0; j < codes.Length; j++ ){
+				SendCode(codes[j]);
+				state[j] = true;
+				if (stop) break;
+			}
+
+			if (!stop)
+			{
+				//Confirma al server que ha indroducido el set de códigos
+				SendCode(9999);
+			}
+			else
+			{
+				//Confirma al server hasta donde haya llegado
+				SendCode(0000);
+			}
+		}
 
         private void SendCode(uint code)
         {
