@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-using static H1Z1Bot.WinAPI.User32;
+using H1Z1Bot.WinAPI;
 
 namespace H1Z1Bot.IO
 {
@@ -21,8 +21,8 @@ namespace H1Z1Bot.IO
                 base.WndProc(ref m);
                 if (m.Msg == 0x0312)
                 {
-                    VirtualKey key = (VirtualKey)(((int)m.LParam >> 16) & 0xFFFF);
-                    ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
+                    User32.VirtualKey key = (User32.VirtualKey)(((int)m.LParam >> 16) & 0xFFFF);
+                    User32.ModifierKeys modifier = (User32.ModifierKeys)((int)m.LParam & 0xFFFF);
                     int id = m.WParam.ToInt32();
                     HandleKey(key, modifier, id);
                 }
@@ -44,7 +44,7 @@ namespace H1Z1Bot.IO
                 {
                     int id = ++iids;
                     handlers.Value.Add(id, h);
-                    RegisterHotKey(form.Value.Handle, id, h.ModKey, h.Key);
+                    User32.RegisterHotKey(form.Value.Handle, id, h.ModKey, h.Key);
                 }
             }
         }
@@ -57,12 +57,12 @@ namespace H1Z1Bot.IO
                 {
                     int id = handlers.Value.First(x => x.Value == h).Key;
                     handlers.Value.Remove(id);
-                    UnregisterHotKey(form.Value.Handle, id);
+                    User32.UnregisterHotKey(form.Value.Handle, id);
                 }
             }
         }
 
-        private static void HandleKey(VirtualKey key, ModifierKeys modkey, int id)
+        private static void HandleKey(User32.VirtualKey key, User32.ModifierKeys modkey, int id)
         {
             if (handlers.Value.ContainsKey(id))
             {

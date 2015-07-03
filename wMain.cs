@@ -16,7 +16,7 @@ namespace H1Z1Bot
     {
         private static readonly int COORD_X = 1444;
         private static readonly int COORD_Y = 719;
-
+        private bool state = false;
         private InputSimulator iosim = new InputSimulator();
         private Random rand = new Random();
 
@@ -33,16 +33,26 @@ namespace H1Z1Bot
 
         private void OnF10Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
-            
+            //Espera por un set de códigos
+            state = false;
+            state = SendCode(1444);
+            //Confirma al server que ha indroducido el código
         }
 
         private void OnF11Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
+            if (state)
+            {
+                //Confirma al server que ha indroducido el código pero que no mande más
+            }
+            else
+            {
+                //Informa al server de que no mande más y espera para confirmar si lo pudo llegar a introducir bien
+            }
         }
 
-        private void SendCode(uint code)
+        private bool SendCode(uint code)
         {
-
             iosim
                 .Keyboard
                 .KeyPress(WindowsInput.Native.VirtualKeyCode.VK_E)
@@ -53,6 +63,8 @@ namespace H1Z1Bot
                 .MoveMouseTo(COORD_X, COORD_Y)
                 .LeftButtonClick()
                 .Sleep(rand.Next(1000, 2000));
+
+            return true;
         }
     }
 }
