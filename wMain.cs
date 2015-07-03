@@ -35,7 +35,7 @@ namespace H1Z1Bot
         private void OnF10Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
             //Esto en su lugar es una petición al servidor
-            uint[] codes = new uint[] {1111,1112,1113,1114,1115};
+            uint[] codes = new uint[] {0000,1112,1113,1114,1115};
 
             for(int j = 0; j < codes.Length; j++ ){
                 SendCode(codes[j]);
@@ -50,7 +50,7 @@ namespace H1Z1Bot
             }
             else
             {
-                //Confirma hasta donde haya llegado
+                //Confirma al server hasta donde haya llegado
                 SendCode(0000);
             }
             
@@ -58,6 +58,7 @@ namespace H1Z1Bot
 
         private void OnF11Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
+            MessageBox.Show("F11 pulsado");
             stop = true;
         }
 
@@ -67,7 +68,7 @@ namespace H1Z1Bot
                 .Keyboard
                 .KeyPress(WindowsInput.Native.VirtualKeyCode.VK_E)
                 .Sleep(rand.Next(1000, 2000))
-                .TextEntry(code.ToString())
+                .TextEntry(code.ToString("D4"))
                 .Sleep(rand.Next(1000, 2000))
                 .Mouse
                 .MoveMouseTo(COORD_X, COORD_Y)
