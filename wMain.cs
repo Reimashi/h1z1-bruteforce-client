@@ -16,7 +16,8 @@ namespace H1Z1Bot
     {
         private static readonly int COORD_X = 1444;
         private static readonly int COORD_Y = 719;
-        private bool state = false;
+        private bool[] state = new bool[] { false, false, false, false, false };
+        private bool stop = false;
         private InputSimulator iosim = new InputSimulator();
         private Random rand = new Random();
 
@@ -33,25 +34,34 @@ namespace H1Z1Bot
 
         private void OnF10Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
-            //Espera por un set de códigos
-            state = false;
-            state = SendCode(1444);
-            //Confirma al server que ha indroducido el código
+            //Esto en su lugar es una petición al servidor
+            uint[] codes = new uint[] {1111,1112,1113,1114,1115};
+
+            for(int j = 0; j < codes.Length; j++ ){
+                SendCode(codes[j]);
+                state[j] = true;
+                if (stop) break;
+            }
+
+            if (!stop)
+            {
+                //Confirma al server que ha indroducido el set de códigos
+                SendCode(9999);
+            }
+            else
+            {
+                //Confirma hasta donde haya llegado
+                SendCode(0000);
+            }
+            
         }
 
         private void OnF11Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
-            if (state)
-            {
-                //Confirma al server que ha indroducido el código pero que no mande más
-            }
-            else
-            {
-                //Informa al server de que no mande más y espera para confirmar si lo pudo llegar a introducir bien
-            }
+            stop = true;
         }
 
-        private bool SendCode(uint code)
+        private void SendCode(uint code)
         {
             iosim
                 .Keyboard
@@ -63,8 +73,11 @@ namespace H1Z1Bot
                 .MoveMouseTo(COORD_X, COORD_Y)
                 .LeftButtonClick()
                 .Sleep(rand.Next(1000, 2000));
+        }
 
-            return true;
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

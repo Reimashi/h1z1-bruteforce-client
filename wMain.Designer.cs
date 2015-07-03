@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.gbInfo = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lConnection = new System.Windows.Forms.Label();
-            this.lDoorname = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lKeys = new System.Windows.Forms.Label();
+            this.lDoorname = new System.Windows.Forms.Label();
+            this.lConnection = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbLog = new System.Windows.Forms.TextBox();
             this.gbInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -60,6 +60,45 @@
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Información";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(50, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "- Para el bot";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(50, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "- Inicia el bot";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "F11";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "F10";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lKeys);
@@ -75,61 +114,29 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Estado";
             // 
-            // label1
+            // lKeys
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "F11";
+            this.lKeys.AutoSize = true;
+            this.lKeys.Location = new System.Drawing.Point(76, 70);
+            this.lKeys.Name = "lKeys";
+            this.lKeys.Size = new System.Drawing.Size(0, 13);
+            this.lKeys.TabIndex = 5;
             // 
-            // label2
+            // lDoorname
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "F12";
+            this.lDoorname.AutoSize = true;
+            this.lDoorname.Location = new System.Drawing.Point(76, 48);
+            this.lDoorname.Name = "lDoorname";
+            this.lDoorname.Size = new System.Drawing.Size(0, 13);
+            this.lDoorname.TabIndex = 4;
             // 
-            // label3
+            // lConnection
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "- Inicia el bot";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "- Para el bot";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Conexión:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Puerta:";
+            this.lConnection.AutoSize = true;
+            this.lConnection.Location = new System.Drawing.Point(76, 26);
+            this.lConnection.Name = "lConnection";
+            this.lConnection.Size = new System.Drawing.Size(0, 13);
+            this.lConnection.TabIndex = 3;
             // 
             // label7
             // 
@@ -140,6 +147,24 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Claves:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Puerta:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Conexión:";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tbLog);
@@ -149,30 +174,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Log";
-            // 
-            // lConnection
-            // 
-            this.lConnection.AutoSize = true;
-            this.lConnection.Location = new System.Drawing.Point(76, 26);
-            this.lConnection.Name = "lConnection";
-            this.lConnection.Size = new System.Drawing.Size(0, 13);
-            this.lConnection.TabIndex = 3;
-            // 
-            // lDoorname
-            // 
-            this.lDoorname.AutoSize = true;
-            this.lDoorname.Location = new System.Drawing.Point(76, 48);
-            this.lDoorname.Name = "lDoorname";
-            this.lDoorname.Size = new System.Drawing.Size(0, 13);
-            this.lDoorname.TabIndex = 4;
-            // 
-            // lKeys
-            // 
-            this.lKeys.AutoSize = true;
-            this.lKeys.Location = new System.Drawing.Point(76, 70);
-            this.lKeys.Name = "lKeys";
-            this.lKeys.Size = new System.Drawing.Size(0, 13);
-            this.lKeys.TabIndex = 5;
             // 
             // tbLog
             // 
