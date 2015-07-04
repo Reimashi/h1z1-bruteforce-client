@@ -36,6 +36,7 @@ namespace H1Z1Bot
 
         private void OnF10Pressed(User32.VirtualKey key, User32.ModifierKeys modkey)
         {
+            stop = false;
 			this.worker = new Thread (TestCodes);
 			this.worker.Start();
         }
@@ -51,7 +52,7 @@ namespace H1Z1Bot
 		private void TestCodes()
 		{
 			//Esto en su lugar es una petición al servidor
-			uint[] codes = new uint[] {0000,1112,1113,1114,1115};
+			uint[] codes = new uint[] {1111,1112,1113,1114,1115};
 
 			for(int j = 0; j < codes.Length; j++ ){
 				SendCode(codes[j]);
